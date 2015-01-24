@@ -6,6 +6,11 @@ public class ParachuteContainer : MonoBehaviour {
     Parachute parachuteScript;
     GameObject parachute;
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        UnEquipParachute();
+    }
+
     public void EquipParachute(GameObject parachute, Parachute parachuteScript)
     {
         this.parachuteScript = parachuteScript;
@@ -20,6 +25,10 @@ public class ParachuteContainer : MonoBehaviour {
 
     public void UnEquipParachute()
     {
+        if (!parachute)
+        {
+            return;
+        }
         parachute.transform.parent = null;
         parachute.transform.Translate(new Vector3(0, 10, 0));
         parachute.collider2D.enabled = true;

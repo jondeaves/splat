@@ -15,6 +15,11 @@ public class JointManager : MonoBehaviour {
         if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.gameObject.tag != "Enemy"))
         {
             Destroy(GetComponent<Joint2D>());
+            ParachuteContainer parachuteContainer = transform.GetComponentInParent<ParachuteContainer>();
+            if (parachuteContainer)
+            {
+                parachuteContainer.UnEquipParachute();
+            }
             tag = "Untagged";
             transform.parent = null;
         }
