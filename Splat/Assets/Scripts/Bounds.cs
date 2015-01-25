@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bounds : MonoBehaviour {
 
-    const int maxDistance = 40;
+    const int maxDistance = 100;
     public bool IsMainObject = false;
 
     void OnTriggerEnter2D(Collider2D collision)

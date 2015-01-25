@@ -17,7 +17,7 @@ public class ParachuteContainer : MonoBehaviour {
             return;
         }
 
-        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.transform.parent != transform.parent))
+        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.transform.parent != transform))
         {
             UnEquipParachute();
         }
@@ -42,7 +42,8 @@ public class ParachuteContainer : MonoBehaviour {
             return;
         }
         parachute.transform.parent = null;
-        parachute.transform.Translate(new Vector3(0, 2, 0));
+        parachute.transform.eulerAngles = Vector3.zero;
+        parachute.transform.Translate(new Vector3(0, 3, 0));
         parachute.collider2D.enabled = true;
         parachute.rigidbody2D.isKinematic = false;
         parachuteScript.enabled = true;
