@@ -12,6 +12,8 @@ public static class Game
     public static int MaxEnemys = 5;
 
     public static int DistanceToGround = 1000;
+    public static bool bIsPlayerDead = false;
+
 
     static Game()
     {

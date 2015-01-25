@@ -53,6 +53,11 @@ public class Arrow : MonoBehaviour {
 
     void UpdatePos()
     {
+        if (!Target)
+        {
+            return;
+        }
+
         Vector3 newPos = transform.position;
         newPos.x = Target.position.x;
         newPos.y = player.position.y + distanceFromPlayer;
