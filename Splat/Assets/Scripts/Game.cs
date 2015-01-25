@@ -14,6 +14,8 @@ public static class Game
     public static int DistanceToGround = 1000;
     public static bool bIsPlayerDead = false;
 
+    public static bool HasChute = false;
+
 
     static Game()
     {
@@ -31,6 +33,18 @@ public static class Game
         else
         {
             --Game.NumberOfProps;
+        }
+    }
+
+    public static void GameOver()
+    {
+        if (HasChute)
+        {
+            Application.LoadLevel("Win");
+        }
+        else
+        {
+            Application.LoadLevel("Lose");
         }
     }
 }

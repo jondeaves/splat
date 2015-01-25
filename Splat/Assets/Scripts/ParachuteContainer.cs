@@ -7,17 +7,18 @@ public class ParachuteContainer : MonoBehaviour {
     public bool IsPlayer = false;
     Parachute parachuteScript;
     GameObject parachute;
+    bool isDeployed = false;
 
     float timeWithParachute = 0;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Parachute"))
+        if (collision.gameObject.CompareTag("Parachute") || collision.gameObject.CompareTag("Ground"))
         {
             return;
         }
 
-        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.transform.parent != transform))
+        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.transform.parent != transform) && !isDeployed)
         {
             UnEquipParachute();
         }
@@ -64,6 +65,8 @@ public class ParachuteContainer : MonoBehaviour {
         {
             parachute.transform.GetChild(0).gameObject.SetActive(true);
             transform.eulerAngles = Vector3.zero;
+            isDeployed = true;
+            Game.HasChute = true;
         }
     }
 }

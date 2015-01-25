@@ -14,7 +14,7 @@ public class Ground : MonoBehaviour {
             //FindObjectOfType<PropFactory>().MassSpawnProps();
             //FindObjectOfType<EnemyFactory>().MassSpawnEnemy();
             
-            //Game.GameOver(false);
+            Game.GameOver();
         }
 
         collision.rigidbody.isKinematic = true;
