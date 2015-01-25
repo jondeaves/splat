@@ -7,9 +7,9 @@ public static class Game
     public static GameObject PlayerBody;
 
     public static int NumberOfProps = 0;
-    public static int MaxProps = 5;
+    public static int MaxProps = 3;
     public static int NumberOfEnemys = 0;
-    public static int MaxEnemys = 5;
+    public static int MaxEnemys = 2;
 
     public static int DistanceToGround = 1000;
     public static bool bIsPlayerDead = false;

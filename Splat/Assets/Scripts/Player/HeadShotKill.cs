@@ -14,11 +14,8 @@ public class HeadShotKill : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-        if (!Game.bIsPlayerDead)
-        {
-
+	void Update () 
+    {
             if (HeadShotTimeoutTimer > 0)
             {
                 HeadShotTimeoutTimer -= Time.deltaTime;
@@ -28,10 +25,12 @@ public class HeadShotKill : MonoBehaviour {
             if (this.HeadShotCount >= HeadShotLimit)
             {
                 this.GetComponent<HingeJoint2D>().enabled = false;
-                Game.bIsPlayerDead = true;
+                transform.parent = null;
+                if (CompareTag("Player") && !Game.bIsPlayerDead)
+                {
+                    Game.bIsPlayerDead = true;
+                }
             }
-
-        }
 	
 	}
 
