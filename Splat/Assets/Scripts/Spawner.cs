@@ -37,10 +37,9 @@ public class Spawner : MonoBehaviour {
         timeTillNextSpawn = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
     }
 
-    void Spawn()
+    public void Spawn(GameObject objToSpawn)
     {
-        GameObject newObj = Instantiate(spawnQueue[0]) as GameObject;
-        spawnQueue.RemoveAt(0);
+        GameObject newObj = Instantiate(objToSpawn) as GameObject;
 
         newObj.transform.position = transform.position;
         newObj.rigidbody2D.velocity = PlayerBody.velocity;
@@ -71,7 +70,8 @@ public class Spawner : MonoBehaviour {
 
         if (timeSinceLastSpawn >= timeTillNextSpawn)
         {
-            Spawn();
+            Spawn(spawnQueue[0]);
+            spawnQueue.RemoveAt(0);
         }
     }
 }

@@ -11,6 +11,8 @@ public static class Game
     public static int NumberOfEnemys = 0;
     public static int MaxEnemys = 5;
 
+    public static int DistanceToGround = 1000;
+
     static Game()
     {
         Player = GameObject.Find("Player");

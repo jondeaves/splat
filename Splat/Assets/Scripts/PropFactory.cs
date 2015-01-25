@@ -15,4 +15,14 @@ public class PropFactory : MonoBehaviour {
         }
     }
 
+    public void MassSpawnProps()
+    {
+        foreach (Spawner spawner in Spawners)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                spawner.Spawn(Props[Random.Range(0, Props.Length)]);
+            }
+        }
+    }
 }

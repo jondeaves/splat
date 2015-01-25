@@ -7,7 +7,7 @@ public class JointManager : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Parachute"))
+        if (collision.gameObject.CompareTag("Parachute") || collision.gameObject.CompareTag("Bounds"))
         {
             return;
         }
