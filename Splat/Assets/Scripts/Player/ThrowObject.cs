@@ -68,7 +68,7 @@ public class ThrowObject : MonoBehaviour {
             }
 
             tmpObject.rigidbody2D.AddForce(direction * 100f);
-            tmpObject.collider2D.enabled = false;
+            //tmpObject.collider2D.enabled = false;
             ThrowableObject = null;
         }
 

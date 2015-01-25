@@ -70,6 +70,9 @@ public class Arrow : MonoBehaviour {
         ToggleActive();
         UpdatePos();
 
-        distanceText.text = Vector3.Distance(transform.position, Target.transform.position).ToString("#") + "m";
+        if (Target != null)
+        {
+            distanceText.text = Vector3.Distance(transform.position, Target.transform.position).ToString("#") + "m";
+        }
 	}
 }
