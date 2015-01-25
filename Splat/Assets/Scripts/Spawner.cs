@@ -22,6 +22,14 @@ public class Spawner : MonoBehaviour {
     public void AddToSpawnQueue(GameObject obj)
     {
         spawnQueue.Add(obj);
+        if (obj.CompareTag("Enemy"))
+        {
+            Game.NumberOfEnemys++;
+        }
+        else
+        {
+            Game.NumberOfProps++;
+        }
     }
 
     void SetTimeTillNextSpawn()
@@ -37,12 +45,19 @@ public class Spawner : MonoBehaviour {
         newObj.transform.position = transform.position;
         newObj.rigidbody2D.velocity = PlayerBody.velocity;
 
-        if (newObj.name.Contains("Enemy"))
+        if (newObj.CompareTag("Enemy"))
         {
-            newObj.rigidbody2D.AddForce(new Vector2(0, -800f));
+            newObj.rigidbody2D.AddForce(new Vector2(0, -600f));
         }
         newObj.rigidbody2D.AddForce(Force);
-        Game.NumberOfProps++;
+        newObj.AddComponent<Bounds>().IsMainObject = true;
+
+        HingeJoint2D[] bodyParts = newObj.GetComponentsInChildren<HingeJoint2D>();
+        foreach (HingeJoint2D bodyPart in bodyParts)
+        {
+            bodyPart.gameObject.AddComponent<Bounds>();
+        }
+
         timeSinceLastSpawn = 0;
     }
 

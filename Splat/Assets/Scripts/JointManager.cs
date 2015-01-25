@@ -12,7 +12,7 @@ public class JointManager : MonoBehaviour {
             return;
         }
 
-        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.gameObject.tag != "Enemy"))
+        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.transform.parent != transform.parent))
         {
             Destroy(GetComponent<Joint2D>());
             ParachuteContainer parachuteContainer = transform.GetComponentInParent<ParachuteContainer>();

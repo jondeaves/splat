@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour {
         propFactory = GetComponent<PropFactory>();
         enemyFactor = GetComponent<EnemyFactory>();
 
+        SpawnWhenNeeded();
+	}
+
+    void SpawnWhenNeeded()
+    {
         if (Game.NumberOfProps < Game.MaxProps)
         {
             propFactory.SpawnInProps(Game.MaxProps - Game.NumberOfProps);
@@ -20,7 +25,11 @@ public class GameManager : MonoBehaviour {
         {
             enemyFactor.SpawnInEnemy(Game.MaxEnemys - Game.NumberOfEnemys);
         }
+    }
 
-	}
+    void Update()
+    {
+        SpawnWhenNeeded();
+    }
 
 }

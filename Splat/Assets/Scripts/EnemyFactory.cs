@@ -11,7 +11,7 @@ public class EnemyFactory : MonoBehaviour {
     {
         for (int i = 0; i < amount; i++)
         {
-            Spawners[Random.Range(0, Spawners.Length - 1)].AddToSpawnQueue(Enemys[Random.Range(0, Enemys.Length - 1)]);
+            Spawners[Random.Range(0, Spawners.Length)].AddToSpawnQueue(Enemys[Random.Range(0, Enemys.Length)]);
         }
     }
 }

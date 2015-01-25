@@ -11,7 +11,7 @@ public class PropFactory : MonoBehaviour {
     {
         for (int i = 0; i < amount; i++)
         {
-            Spawners[Random.Range(0, Spawners.Length - 1)].AddToSpawnQueue(Props[Random.Range(0, Props.Length - 1)]);
+            Spawners[Random.Range(0, Spawners.Length)].AddToSpawnQueue(Props[Random.Range(0, Props.Length)]);
         }
     }
 

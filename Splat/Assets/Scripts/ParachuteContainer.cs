@@ -2,13 +2,25 @@
 using System.Collections;
 
 public class ParachuteContainer : MonoBehaviour {
-
+    [HideInInspector]
+    public bool HasParachute = false;
+    public bool IsPlayer = false;
     Parachute parachuteScript;
     GameObject parachute;
 
+    float timeWithParachute = 0;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        UnEquipParachute();
+        if (collision.gameObject.CompareTag("Parachute"))
+        {
+            return;
+        }
+
+        if ((IsPlayer && collision.gameObject.tag != "Player") || (!IsPlayer && collision.transform.parent != transform.parent))
+        {
+            UnEquipParachute();
+        }
     }
 
     public void EquipParachute(GameObject parachute, Parachute parachuteScript)
@@ -30,11 +42,27 @@ public class ParachuteContainer : MonoBehaviour {
             return;
         }
         parachute.transform.parent = null;
-        parachute.transform.Translate(new Vector3(0, 10, 0));
+        parachute.transform.Translate(new Vector3(0, 2, 0));
         parachute.collider2D.enabled = true;
         parachute.rigidbody2D.isKinematic = false;
         parachuteScript.enabled = true;
         this.parachuteScript = null;
         this.parachute = null;
+        timeWithParachute = 0;
+    }
+
+    void Update()
+    {
+        if (!parachute)
+        {
+            return;
+        }
+
+        timeWithParachute += Time.deltaTime;
+        if (timeWithParachute > 5)
+        {
+            parachute.transform.GetChild(0).gameObject.SetActive(true);
+            transform.eulerAngles = Vector3.zero;
+        }
     }
 }

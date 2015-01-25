@@ -7,19 +7,26 @@ public class ThrowObject : MonoBehaviour {
 
     public GameObject Target;
     public GameObject ThrowableObject;
-
+    public float Range = 20f;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
+        if (!CompareTag("Player"))
+        {
+            GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+            foreach(GameObject obj in playerObjects)
+            {
+                if (obj.name == "Body")
+                {
+                    Target = obj;
+                }
+            }
+        }
 	}
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            //PerformThrowObject();
-        }
-
         if(transform.tag == "Player")
         {
             if(Input.GetKeyUp(KeyCode.Space))
@@ -30,7 +37,7 @@ public class ThrowObject : MonoBehaviour {
         else if(Target != null)
         {
             float distanceToTarget = Vector2.Distance(this.transform.position, Target.transform.position);
-            if (distanceToTarget < 900f)
+            if (distanceToTarget < Range)
             {
                 PerformThrowObject();
             }
