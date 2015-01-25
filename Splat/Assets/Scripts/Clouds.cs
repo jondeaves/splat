@@ -4,10 +4,12 @@ using System.Collections;
 public class Clouds : MonoBehaviour {
 	public Transform Player;
     public float Distance = 35;
+    float speed = 5;
 	float distance;
 	
 	void Update () 
     {
+        transform.Translate(Vector3.up * Time.deltaTime * speed);
         if (transform.position.y < Player.position.y)
         {
             return;

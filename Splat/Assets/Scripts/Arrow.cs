@@ -65,6 +65,6 @@ public class Arrow : MonoBehaviour {
         ToggleActive();
         UpdatePos();
 
-        distanceText.text = Vector3.Distance(transform.position, Target.transform.position).ToString("#");
+        distanceText.text = Vector3.Distance(transform.position, Target.transform.position).ToString("#") + "m";
 	}
 }
